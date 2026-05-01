@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JPMorgan Scandal — May 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@400;500&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1410;
+      --paper: #f5f0e8;
+      --accent: #c0392b;
+      --muted: #7a6e62;
+      --rule: #2c2218;
+      --highlight: #f0e8d0;
+    }
+
+```
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Libre Baskerville', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.75;
+  min-height: 100vh;
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── MASTHEAD ── */
+header {
+  border-bottom: 4px double var(--rule);
+  padding: 32px 0 20px;
+  text-align: center;
+  animation: fadeDown 0.6s ease both;
+}
+
+.masthead-eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.masthead-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 7vw, 72px);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.masthead-title span {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.masthead-sub {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-top: 16px;
+  text-transform: uppercase;
+}
+
+/* ── TICKER ── */
+.ticker-wrap {
+  background: var(--ink);
+  color: var(--paper);
+  overflow: hidden;
+  padding: 8px 0;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  animation: fadeDown 0.6s 0.1s ease both;
+}
+
+.ticker-inner {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-inner span { margin: 0 48px; }
+.ticker-inner .sep { color: var(--accent); }
+
+@keyframes ticker {
+  from { transform: translateX(100vw); }
+  to   { transform: translateX(-100%); }
+}
+
+/* ── HERO HEADLINE ── */
+.hero {
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--rule);
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.kicker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+h1.headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.deck {
+  font-size: 18px;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 640px;
+  line-height: 1.6;
+}
+
+.byline-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.byline-row .dot { color: var(--accent); }
+
+/* ── STATUS BADGE ── */
+.status-strip {
+  background: var(--accent);
+  color: #fff;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 10px 0;
+  text-align: center;
+  margin: 0 -24px;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+/* ── BODY CONTENT ── */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: 48px;
+  padding: 48px 0;
+  animation: fadeUp 0.7s 0.35s ease both;
+}
+
+@media (max-width: 680px) {
+  .content-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* Main column */
+.main-col section { margin-bottom: 40px; }
+
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-rule h2 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--muted);
+  opacity: 0.35;
+}
+
+.main-col p {
+  margin-bottom: 20px;
+  color: var(--ink);
+}
+
+.pullquote {
+  border-left: 3px solid var(--accent);
+  margin: 32px 0;
+  padding: 16px 24px;
+  background: var(--highlight);
+}
+
+.pullquote p {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
+}
+
+.pullquote cite {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 10px;
+  font-style: normal;
+}
+
+/* Sidebar */
+.sidebar {
+  padding-top: 4px;
+}
+
+.sidebar-card {
+  border: 1px solid rgba(44,34,24,0.2);
+  padding: 24px;
+  margin-bottom: 28px;
+  background: var(--highlight);
+}
+
+.sidebar-card h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(44,34,24,0.15);
+}
+
+.sidebar-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-card ul li {
+  font-size: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(44,34,24,0.08);
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.sidebar-card ul li:last-child { border-bottom: none; }
+
+.sidebar-card ul li strong {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.timeline-dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  margin-right: 8px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(44,34,24,0.08);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.timeline-item:last-child { border-bottom: none; }
+
+.timeline-date {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  white-space: nowrap;
+  margin-top: 2px;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 4px double var(--rule);
+  padding: 28px 0;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+
+footer a { color: var(--muted); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+```
+
+  </style>
+</head>
+<body>
+
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>JPMORGAN CHASE &nbsp;<span class="sep">◆</span>&nbsp; LORNA HAJDINI LAWSUIT &nbsp;<span class="sep">◆</span>&nbsp; COMPLAINT WITHDRAWN &nbsp;<span class="sep">◆</span>&nbsp; BANK DENIES ALL CLAIMS &nbsp;<span class="sep">◆</span>&nbsp; JOHN DOE IDENTIFIED &nbsp;<span class="sep">◆</span>&nbsp; WORKPLACE CULTURE SCRUTINY &nbsp;<span class="sep">◆</span>&nbsp; ONGOING LEGAL PROCEEDINGS &nbsp;<span class="sep">◆</span>&nbsp; INTERNAL INVESTIGATION COMPLETE &nbsp;<span class="sep">◆</span>&nbsp;</span>
+      <span>JPMORGAN CHASE &nbsp;<span class="sep">◆</span>&nbsp; LORNA HAJDINI LAWSUIT &nbsp;<span class="sep">◆</span>&nbsp; COMPLAINT WITHDRAWN &nbsp;<span class="sep">◆</span>&nbsp; BANK DENIES ALL CLAIMS &nbsp;<span class="sep">◆</span>&nbsp; JOHN DOE IDENTIFIED &nbsp;<span class="sep">◆</span>&nbsp; WORKPLACE CULTURE SCRUTINY &nbsp;<span class="sep">◆</span>&nbsp; ONGOING LEGAL PROCEEDINGS &nbsp;<span class="sep">◆</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <header>
+    <div class="wrapper">
+      <div class="masthead-eyebrow">Breaking Analysis &nbsp;·&nbsp; Finance &nbsp;·&nbsp; May 2026</div>
+      <div class="masthead-title">THE <span>RECORD</span></div>
+      <div class="masthead-sub">Independent Financial News Summary</div>
+    </div>
+  </header>
+
+  <div class="status-strip">
+    ⚡ Developing Story — Last Updated May 1, 2026 &nbsp;·&nbsp; Lawsuit Withdrawn · Investigation Ongoing
+  </div>
+
+  <div class="wrapper">
+
+```
+<div class="hero">
+  <div class="kicker">Wall Street Scandal</div>
+  <h1 class="headline">JPMorgan Executive Accused of Sexual Coercion — Then the Lawsuit Collapsed</h1>
+  <p class="deck">A viral court filing alleged drugging, coercion, and racial harassment inside one of the world's most powerful banks. Within days, the complaint was retracted and JPMorgan called it a fabrication. Here's everything that happened.</p>
+  <div class="byline-row">
+    <span>News Desk</span>
+    <span class="dot">◆</span>
+    <span>May 1, 2026</span>
+    <span class="dot">◆</span>
+    <span>5 min read</span>
+  </div>
+</div>
+
+<div class="content-grid">
+
+  <!-- MAIN COLUMN -->
+  <div class="main-col">
+
+    <section>
+      <div class="section-rule"><h2>The Allegations</h2></div>
+      <p>On April 28, 2026, a civil complaint filed in New York County Supreme Court under the pseudonym "John Doe" named <strong>Lorna Hajdini</strong>, a 37-year-old executive director in JPMorgan Chase's leveraged finance division, along with the bank itself. The filing alleged a months-long campaign of sexual harassment, coercion, and racial intimidation against a junior employee.</p>
+      <p>The complaint claimed Hajdini used her position of authority to coerce the employee into repeated non-consensual sexual encounters, allegedly drugging him with Rohypnol and Viagra and threatening his bonus, career progression, and livelihood if he refused to comply.</p>
+
+      <div class="pullquote">
+        <p>"If you don't comply, I'm going to ruin you… never forget, I own you."</p>
+        <cite>— Alleged statement attributed to Lorna Hajdini in the original complaint</cite>
+      </div>
+
+      <p>The complaint also included allegations of racial harassment, with the plaintiff identifying as a man of Indian descent who claimed Hajdini made discriminatory remarks tied to his background. The filing went viral almost immediately, generating enormous media coverage across financial and mainstream press.</p>
+    </section>
+
+    <section>
+      <div class="section-rule"><h2>The Bank's Response</h2></div>
+      <p>JPMorgan Chase moved quickly to deny the allegations in full. A bank spokesperson stated that an internal investigation — conducted through HR and in-house legal teams — had reviewed team phone records, emails, and conducted interviews with relevant employees.</p>
+      <p>"Following an investigation, we don't believe there's any merit to these claims," the spokesperson said. The bank also disclosed that the complainant had <em>refused to participate</em> in the investigation or provide facts central to his own allegations. "While numerous employees cooperated with the investigation, the complainant refused to participate and has declined to provide facts that would be central to support his allegations."</p>
+      <p>Hajdini also denied all wrongdoing through her attorneys, stating she had never engaged in any inappropriate conduct with the complainant and had never visited the location where some of the alleged acts were said to have occurred.</p>
+    </section>
+
+    <section>
+      <div class="section-rule"><h2>John Doe Unmasked</h2></div>
+      <p>Within 24 hours of the filing going viral, the New York Post reported that multiple sources had identified the anonymous plaintiff as <strong>Chirayu Rana</strong>, a 35-year-old former JPMorgan staffer who at the time of reporting was working as a principal at private equity firm Bregal Sagemount.</p>
+      <p>According to the Post's reporting, Rana had filed an internal complaint in May 2025 — alleging race and gender-based harassment and abuse of power — and later attempted to negotiate a severance package in the "millions." That request was rejected by the bank.</p>
+      <p>Rana left JPMorgan in late 2024. He did not respond to requests for comment. Allies of Hajdini described the lawsuit as a "complete fabrication." The original court filing was subsequently withdrawn for "corrections" — a detail that drew significant scrutiny given the timing.</p>
+    </section>
+
+    <section>
+      <div class="section-rule"><h2>Wider Scrutiny</h2></div>
+      <p>The case has also drawn renewed attention to JPMorgan's broader workplace culture. Separately, <em>The Financial Times</em> reported that earlier conduct allegations involving <strong>Vis Raghavan</strong>, a former JPMorgan executive who departed for Citigroup in 2024, had previously been raised internally. Sources described Raghavan as someone who could "explode" in his office and allegedly made demeaning comments about colleagues. He denied specific allegations when questioned by HR. Raghavan secured a senior investment banking role at Citi within days of leaving JPMorgan.</p>
+      <p>As of May 1, 2026, the legal situation remains fluid. The original complaint was withdrawn but could be refiled. No criminal charges have been filed. The case is expected to continue generating significant coverage as details emerge.</p>
+    </section>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-card">
+      <h3>Key Figures</h3>
+      <ul>
+        <li>
+          <strong>Lorna Hajdini</strong>
+          Executive Director, Leveraged Finance Division, JPMorgan Chase. Age 37. Named defendant. Denies all allegations.
+        </li>
+        <li>
+          <strong>Chirayu Rana</strong>
+          Alleged "John Doe" plaintiff. Former JPMorgan staffer, age 35. Now a principal at Bregal Sagemount. Refused to participate in internal investigation.
+        </li>
+        <li>
+          <strong>Vis Raghavan</strong>
+          Former JPMorgan executive. Left for Citigroup in 2024. Subject of separate, earlier workplace conduct allegations.
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>Timeline of Events</h3>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">Late 2024</div>
+          Rana departs JPMorgan.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">May 2025</div>
+          Rana files internal HR complaint; requests multi-million dollar severance. Rejected.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">Apr 28, 2026</div>
+          Civil complaint filed in NY Supreme Court under "John Doe."
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">Apr 29, 2026</div>
+          Lawsuit goes viral. JPMorgan denies all claims.
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">Apr 30, 2026</div>
+          NY Post identifies Rana. Hajdini allies call claims "complete fabrication."
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-dot"></span>
+        <div>
+          <div class="timeline-date">May 1, 2026</div>
+          Original complaint withdrawn for "corrections." Story still developing.
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <h3>What to Watch</h3>
+      <ul>
+        <li>Whether a revised complaint is refiled</li>
+        <li>Any response from Chirayu Rana or his attorneys</li>
+        <li>Possible regulatory or criminal referrals</li>
+        <li>Broader JPMorgan workplace culture investigations</li>
+      </ul>
+    </div>
+
+  </aside>
+</div>
+```
+
+  </div>
+
+  <footer>
+    <div class="wrapper">
+      <p>Summary compiled from publicly available reporting &nbsp;·&nbsp; New York Post, Financial Times, Audacy, Express Tribune &nbsp;·&nbsp; May 1, 2026</p>
+      <p style="margin-top:8px;">This page is a news summary for informational purposes only. All allegations are unproven in court.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
